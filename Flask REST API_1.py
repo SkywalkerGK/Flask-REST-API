@@ -5,10 +5,16 @@ from flask_restful import Api,Resource #2.สร้าง api 3.สร้าง 
 app=Flask(__name__)
 api=Api(app)
 
+mycity={
+    "ชลบุรี":{"weather":"อากาศร้อนอบอ้าว","people":1500},
+    "ระยอง":{"weather":"ฝนตก","people":2000},
+    "กรุงเทพ":{"weather":"หนาว","people":5000},
+}
+
 #ออกแบบ Resorce
 class WeatherCity(Resource):
     def get(self,name): #HTTP Method
-        return {"data":"Select : " + name}  #{"key":"value"}
+        return mycity[name]  #{"key":"value"}
     def post(self,name):
         return{"data":"Creat Resource"+name}    
 
