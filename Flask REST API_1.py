@@ -7,11 +7,13 @@ api=Api(app)
 
 #ออกแบบ Resorce
 class WeatherCity(Resource):
-    def get(self): #HTTP Method
-        return {"data":"Hello Weather City in Thailand"}  #{"key":"value"}
+    def get(self,name): #HTTP Method
+        return {"data":"Select : " + name}  #{"key":"value"}
+    def post(self,name):
+        return{"data":"Creat Resource"+name}    
 
 #call เรียก Resorce ผ่าน api ทำให้ api มีก้อนข้อมูล
-api.add_resource(WeatherCity,"/weather") #เส้นทางในการเข้าถึง Resourse
+api.add_resource(WeatherCity,"/weather/<string:name>") #เส้นทางในการเข้าถึง Resourse
 
 if __name__ == "__main__":
     app.run(debug=True)
